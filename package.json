@@ -1,0 +1,32 @@
+{
+  "name": "@ckdot/fontselector",
+  "version": "1.0.0",
+  "description": "Font selector with font previews without the use of Google Fonts.",
+  "main": "./dist/FontSelector.js",
+  "scripts": {
+    "dev": "./node_modules/.bin/webpack",
+    "watch": "./node_modules/.bin/webpack --watch",
+    "build": "./node_modules/.bin/webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckdot/font-selector.git"
+  },
+  "author": "Christian Kilb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ckdot/font-selector/issues"
+  },
+  "homepage": "https://github.com/ckdot/font-selector#readme",
+  "devDependencies": {
+    "css-loader": "^3.4.2",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}

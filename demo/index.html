@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Font Selector Demo Page</title>
+    <link rel="stylesheet" type="text/css" href="../dist/styles.css" />
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <style type="text/css">
+        body {
+            padding-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Font Selector Demo</h1>
+        <noscript>Please enable JavaScript to have the Font Selector working.</noscript>
+
+        <form method="post">
+            <label for="font-selector">Choose Font</label><br />
+            <select id="font-selector" name="font">
+                <option value="Amatic SC" data-font-url="./fonts/AmaticSC-Regular.ttf">Amatic SC</option>
+                <option value="Bangers" data-font-url="./fonts/Bangers-Regular.ttf">Bangers</option>
+                <option value="Comfortaa" data-font-url="./fonts/Comfortaa.ttf">Comfortaa</option>
+                <option value="Dancing Script" data-font-url="./fonts/DancingScript.ttf">Dancing Script</option>
+                <option value="Indie Flower" data-font-url="./fonts/IndieFlower-Regular.ttf">Indie Flower</option>
+                <option value="Montserrat" data-font-url="./fonts/Montserrat-Regular.ttf">Montserrat</option>
+                <option value="Open Sans" data-font-url="./fonts/OpenSans-Regular.ttf">Open Sans</option>
+                <option value="Open Sans Condensed Light" data-font-url="./fonts/OpenSansCondensed-Light.ttf">Open Sans Condensed Light</option>
+                <option value="Pacifico" data-font-url="./fonts/Pacifico-Regular.ttf">Pacifico</option>
+                <option value="Roboto" data-font-url="./fonts/Roboto-Regular.ttf">Roboto</option>
+                <option value="Shadows Into Light" data-font-url="./fonts/ShadowsIntoLight-Regular.ttf">Shadows Into Light</option>
+            </select>
+            <p>
+                <small>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</small>
+            </p>
+            <button type="submit" class="btn btn-primary">Select Font</button>
+        </form>
+
+        <script type="text/javascript" src="../dist/font-selector.js"></script>
+        <script type="text/javascript">
+            new FontSelector('#font-selector', {
+                onSelected: (fontName) => {
+                    console.log('Font "' + fontName + '" was selected.');
+                }
+            });
+
+            const formElement = document.querySelector('form');
+            const selectElement = document.querySelector('#font-selector');
+
+                formElement.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                alert('Selected font: ' + selectElement.value);
+            })
+        </script>
+    </div>
+</body>
+
+</html>
