@@ -51,7 +51,8 @@ export default class FontSelector {
         const fontListElement = document.createElement('ul');
         const optionElement = this.getSelectedOption(selectElement);
         const fontFamily = optionElement.value;
-        const fontName = optionElement.innerText.trim();
+        const fontName = optionElement.textContent!.trim();
+        
         const selectedFontElement = this.createSelectedFontElement(fontFamily, fontName, dropdownElement, options);
         const fontListListItemElements = this.createFontListListItemElements(
             dropdownElement,
@@ -83,7 +84,7 @@ export default class FontSelector {
         const selectedFontFamilyClassName = this.getFontFamilyClassName(selectedFontFamily);
         const selectedFontNameElement = document.createElement('span');
 
-        selectedFontNameElement.innerText = selectedFontName;
+        selectedFontNameElement.textContent = selectedFontName;
         selectedFontNameElement.classList.add(options.dropdownSelectedFontNameClassName);
 
         selectedFontElement.append(selectedFontNameElement);
@@ -136,11 +137,11 @@ export default class FontSelector {
             const listItem: HTMLLIElement = document.createElement('li');
             const optionElement = selectElement.options[index];
             const fontFamily = optionElement.value;
-            const fontName = optionElement.innerText.trim();
+            const fontName = optionElement.textContent!.trim();
             const fontFamilyClassName = this.getFontFamilyClassName(fontFamily);
 
             listItem.classList.add(fontFamilyClassName);
-            listItem.innerText = fontName;
+            listItem.textContent = fontName;
             listItem.setAttribute('data-font', fontFamily);
             listItem.addEventListener('click', () => {
                 this.selectFont(
@@ -179,7 +180,7 @@ export default class FontSelector {
 
         selectedFontElement.classList.remove(previouslySelectedFontFamilyClassName);
         selectedFontElement.classList.add(newSelectedFontFamilyClassName);
-        selectedFontNameElement.innerText = fontName;
+        selectedFontNameElement.textContent = fontName;
 
         selectedFontElement.innerHTML = '';
         selectedFontElement.append(selectedFontNameElement);
