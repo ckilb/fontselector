@@ -42,7 +42,7 @@
 
         <script type="text/javascript" src="../dist/fontselector.js"></script>
         <script type="text/javascript">
-            new FontSelector('#font-selector', {
+            const fontSelector = new FontSelector('#font-selector', {
                 onSelected: (font) => {
                     console.log('Font "' + font.name + '" was selected.');
                 }

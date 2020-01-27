@@ -1,1 +1,113 @@
-window.FontSelector=function(t){var e={};function n(o){if(e[o])return e[o].exports;var s=e[o]={i:o,l:!1,exports:{}};return t[o].call(s.exports,s,s.exports,n),s.l=!0,s.exports}return n.m=t,n.c=e,n.d=function(t,e,o){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:o})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var s in t)n.d(o,s,function(e){return t[e]}.bind(null,s));return o},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=0)}([function(t,e,n){"use strict";e.__esModule=!0,n(1);var o=function(){function t(e,n){this.options=t.mergeOptionsWithDefaults(n),this.nativeSelectElement=document.querySelector(e),this.fonts=this.getFonts(),this.wrapperElement=this.wrapSelectElement(),this.selectedFontElement=this.createSelectedFontElement(),this.fontListListItemElements=this.createFontListListItemElements(),this.dropdownElement=this.createDropdownElement(),this.loadFonts(),this.wrapperElement.appendChild(this.dropdownElement)}return t.prototype.selectFont=function(t){var e=this.getFontByFamily(t);if(e){var n=this.getSelectedOption(),o=this.getFontFamilyClassName(n.value),s=this.getFontFamilyClassName(e.family),i=document.createElement("span");i.classList.add(this.options.dropdownSelectedFontNameClassName),this.selectedFontElement.classList.add(this.options.dropdownSelectedFontClassName,s),this.collapseFontList(),this.selectedFontElement.classList.remove(o),this.selectedFontElement.classList.add(s),i.textContent=e.name,this.selectedFontElement.innerHTML="",this.selectedFontElement.append(i),this.nativeSelectElement.value=e.family,this.options.onSelected(e)}},t.mergeOptionsWithDefaults=function(e){return e=Object.assign(t.getDefaultOptions(),e)},t.getDefaultOptions=function(){return{wrapperClassName:"font-selector-wrapper",dropdownClassName:"font-selector-dropdown",dropdownSelectedFontClassName:"font-selector-selected-font",dropdownSelectedFontNameClassName:"font-selector-selected-font-name",dropdownFontListClassName:"font-selector-font-list",isExpandedClassName:"font-selector-is-expanded",onExpanded:function(){},onSelected:function(){},onCollapsed:function(){}}},t.prototype.createDropdownElement=function(){var t=document.createElement("div"),e=document.createElement("ul");return this.fontListListItemElements.forEach((function(t){e.appendChild(t)})),t.classList.add(this.options.dropdownClassName),e.classList.add(this.options.dropdownFontListClassName),t.appendChild(this.selectedFontElement),t.appendChild(e),t},t.prototype.createSelectedFontElement=function(){var t=this,e=this.getSelectedOption(),n=e.value,o=e.textContent.trim(),s=document.createElement("a"),i=this.getFontFamilyClassName(n),a=document.createElement("span");return a.textContent=o,a.classList.add(this.options.dropdownSelectedFontNameClassName),s.append(a),s.classList.add(this.options.dropdownSelectedFontClassName,i),s.addEventListener("click",(function(){t.isExpanded()?t.collapseFontList():t.expandFontList()})),document.body.addEventListener("click",(function(e){e.target&&e.target===s||t.collapseFontList()})),s},t.prototype.isExpanded=function(){return this.dropdownElement.classList.contains(this.options.isExpandedClassName)},t.prototype.expandFontList=function(){this.dropdownElement.classList.add(this.options.isExpandedClassName),this.options.onExpanded()},t.prototype.collapseFontList=function(){this.dropdownElement.classList.remove(this.options.isExpandedClassName),this.options.onCollapsed()},t.prototype.createFontListListItemElements=function(){var t=this,e=[];return this.fonts.forEach((function(n){var o=document.createElement("li"),s=t.getFontFamilyClassName(n.family);o.classList.add(s),o.textContent=n.name,o.setAttribute("data-font",n.family),o.addEventListener("click",(function(){t.selectFont(o.getAttribute("data-font"))})),e.push(o)})),e},t.prototype.wrapSelectElement=function(){var t=this.nativeSelectElement.parentNode,e=document.createElement("div");return e.classList.add(this.options.wrapperClassName),t.insertBefore(e,this.nativeSelectElement),e.appendChild(this.nativeSelectElement),e},t.prototype.getSelectedOption=function(){return this.nativeSelectElement.options[this.nativeSelectElement.options.selectedIndex]},t.prototype.loadFonts=function(){var t=this;this.fonts.forEach((function(e){t.loadFont(e)}))},t.prototype.loadFont=function(t){var e=document.createElement("style");e.setAttribute("type","text/css"),e.innerHTML="\n@font-face { font-family: '"+t.family+"'; src: url('"+t.url+"'); }\n",e.innerHTML+="."+this.getFontFamilyClassName(t.family)+'{ font-family: "'+t.family+'"}',document.head.append(e)},t.prototype.getFontFamilyClassName=function(t){return"font-"+t.replace(/[^a-z0-9\-]/gi,"-").toLowerCase()},t.prototype.getFontByFamily=function(t){for(var e=0;e<this.fonts.length;e++){var n=this.fonts[e];if(n.family===t)return n}return null},t.prototype.getFonts=function(){for(var t=[],e=0;e<this.nativeSelectElement.options.length;e++){var n=this.nativeSelectElement.options[e],o={name:n.textContent.trim(),family:n.value,url:n.getAttribute("data-font-url")};t.push(o)}return t},t}();e.default=o},function(t,e,n){}]).default;
+window["FontSelector"] =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/ts/FontSelector.ts");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/scss/style.scss":
+/*!*****************************!*\
+  !*** ./src/scss/style.scss ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack://FontSelector/./src/scss/style.scss?");
+
+/***/ }),
+
+/***/ "./src/ts/FontSelector.ts":
+/*!********************************!*\
+  !*** ./src/ts/FontSelector.ts ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nexports.__esModule = true;\n__webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\nvar CSS_CLASS_PREFIX = 'font-selector-';\nvar FontSelector = /** @class */ (function () {\n    function FontSelector(selector, options) {\n        this.options = FontSelector.mergeOptionsWithDefaults(options);\n        this.nativeSelectElement = document.querySelector(selector);\n        this.fonts = this.getFonts();\n        this.wrapperElement = this.wrapSelectElement();\n        this.selectedFontElement = this.createSelectedFontElement();\n        this.fontListListItemElements = this.createFontListListItemElements();\n        this.dropdownElement = this.createDropdownElement();\n        this.selectFont(this.getSelectedOption().value);\n        this.loadFonts();\n        this.wrapperElement.appendChild(this.dropdownElement);\n    }\n    FontSelector.prototype.selectFont = function (fontFamily) {\n        var font = this.getFontByFamily(fontFamily);\n        if (!font) {\n            return;\n        }\n        var selectedOption = this.getSelectedOption();\n        var previouslySelectedFontFamilyClassName = this.getFontFamilyClassName(selectedOption.value);\n        var newSelectedFontFamilyClassName = this.getFontFamilyClassName(font.family);\n        var selectedFontNameElement = document.createElement('span');\n        selectedFontNameElement.classList.add(this.options.dropdownSelectedFontNameClassName);\n        this.selectedFontElement.classList.add(this.options.dropdownSelectedFontClassName, newSelectedFontFamilyClassName);\n        this.collapseFontList();\n        this.selectedFontElement.classList.remove(previouslySelectedFontFamilyClassName);\n        this.selectedFontElement.classList.add(newSelectedFontFamilyClassName);\n        selectedFontNameElement.textContent = font.name;\n        this.selectedFontElement.innerHTML = '';\n        this.selectedFontElement.append(selectedFontNameElement);\n        this.nativeSelectElement.value = font.family;\n        this.selectedFont = font;\n        this.options.onSelected(font);\n    };\n    FontSelector.prototype.getSelectedFont = function () {\n        if (!this.selectedFont) {\n            return null;\n        }\n        return this.selectedFont;\n    };\n    FontSelector.mergeOptionsWithDefaults = function (options) {\n        options = Object.assign(FontSelector.getDefaultOptions(), options);\n        return options;\n    };\n    FontSelector.getDefaultOptions = function () {\n        return {\n            'wrapperClassName': CSS_CLASS_PREFIX + 'wrapper',\n            'dropdownClassName': CSS_CLASS_PREFIX + 'dropdown',\n            'dropdownSelectedFontClassName': CSS_CLASS_PREFIX + 'selected-font',\n            'dropdownSelectedFontNameClassName': CSS_CLASS_PREFIX + 'selected-font-name',\n            'dropdownFontListClassName': CSS_CLASS_PREFIX + 'font-list',\n            'isExpandedClassName': CSS_CLASS_PREFIX + 'is-expanded',\n            'onExpanded': function () { },\n            'onSelected': function () { },\n            'onCollapsed': function () { }\n        };\n    };\n    FontSelector.prototype.createDropdownElement = function () {\n        var dropdownElement = document.createElement('div');\n        var fontListElement = document.createElement('ul');\n        this.fontListListItemElements.forEach(function (listItemElement) {\n            fontListElement.appendChild(listItemElement);\n        });\n        dropdownElement.classList.add(this.options.dropdownClassName);\n        fontListElement.classList.add(this.options.dropdownFontListClassName);\n        dropdownElement.appendChild(this.selectedFontElement);\n        dropdownElement.appendChild(fontListElement);\n        return dropdownElement;\n    };\n    FontSelector.prototype.createSelectedFontElement = function () {\n        var _this = this;\n        var selectedFontElement = document.createElement('a');\n        var selectedFontNameElement = document.createElement('span');\n        selectedFontNameElement.classList.add(this.options.dropdownSelectedFontNameClassName);\n        selectedFontElement.append(selectedFontNameElement);\n        selectedFontElement.classList.add(this.options.dropdownSelectedFontClassName);\n        selectedFontElement.addEventListener('click', function () {\n            if (_this.isExpanded()) {\n                _this.collapseFontList();\n                return;\n            }\n            _this.expandFontList();\n        });\n        document.body.addEventListener('click', function (event) {\n            if (!event.target || event.target !== selectedFontElement) {\n                _this.collapseFontList();\n            }\n        });\n        return selectedFontElement;\n    };\n    FontSelector.prototype.isExpanded = function () {\n        return this.dropdownElement.classList.contains(this.options.isExpandedClassName);\n    };\n    FontSelector.prototype.expandFontList = function () {\n        this.dropdownElement.classList.add(this.options.isExpandedClassName);\n        this.options.onExpanded();\n    };\n    FontSelector.prototype.collapseFontList = function () {\n        this.dropdownElement.classList.remove(this.options.isExpandedClassName);\n        this.options.onCollapsed();\n    };\n    FontSelector.prototype.createFontListListItemElements = function () {\n        var _this = this;\n        var listItemElements = [];\n        this.fonts.forEach(function (font) {\n            var listItem = document.createElement('li');\n            var fontFamilyClassName = _this.getFontFamilyClassName(font.family);\n            listItem.classList.add(fontFamilyClassName);\n            listItem.textContent = font.name;\n            listItem.setAttribute('data-font', font.family);\n            listItem.addEventListener('click', function () {\n                _this.selectFont(listItem.getAttribute('data-font'));\n            });\n            listItemElements.push(listItem);\n        });\n        return listItemElements;\n    };\n    FontSelector.prototype.wrapSelectElement = function () {\n        var parentNode = this.nativeSelectElement.parentNode;\n        var wrapper = document.createElement('div');\n        wrapper.classList.add(this.options.wrapperClassName);\n        parentNode.insertBefore(wrapper, this.nativeSelectElement);\n        wrapper.appendChild(this.nativeSelectElement);\n        return wrapper;\n    };\n    FontSelector.prototype.getSelectedOption = function () {\n        return this.nativeSelectElement.options[this.nativeSelectElement.options.selectedIndex];\n    };\n    FontSelector.prototype.loadFonts = function () {\n        var _this = this;\n        this.fonts.forEach(function (font) {\n            _this.loadFont(font);\n        });\n    };\n    FontSelector.prototype.loadFont = function (font) {\n        var styleTag = document.createElement('style');\n        styleTag.setAttribute('type', 'text/css');\n        styleTag.innerHTML = \"\\n@font-face { font-family: '\" + font.family + \"'; src: url('\" + font.url + \"'); }\\n\";\n        styleTag.innerHTML += '.' + this.getFontFamilyClassName(font.family) + '{ font-family: \"' + font.family + '\"}';\n        document.head.append(styleTag);\n    };\n    FontSelector.prototype.getFontFamilyClassName = function (fontFamily) {\n        return 'font-' + fontFamily\n            .replace(/[^a-z0-9\\-]/gi, '-')\n            .toLowerCase();\n    };\n    FontSelector.prototype.getFontByFamily = function (fontFamily) {\n        for (var index = 0; index < this.fonts.length; index++) {\n            var font = this.fonts[index];\n            if (font.family === fontFamily) {\n                return font;\n            }\n        }\n        return null;\n    };\n    FontSelector.prototype.getFonts = function () {\n        var fonts = [];\n        for (var index = 0; index < this.nativeSelectElement.options.length; index++) {\n            var optionElement = this.nativeSelectElement.options[index];\n            var font = {\n                name: optionElement.textContent.trim(),\n                family: optionElement.value,\n                url: optionElement.getAttribute('data-font-url')\n            };\n            fonts.push(font);\n        }\n        return fonts;\n    };\n    return FontSelector;\n}());\nexports[\"default\"] = FontSelector;\n\n\n//# sourceURL=webpack://FontSelector/./src/ts/FontSelector.ts?");
+
+/***/ })
+
+/******/ })["default"];

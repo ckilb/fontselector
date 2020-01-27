@@ -11,6 +11,7 @@ export default class FontSelector {
     selectedFontElement: HTMLAnchorElement;
     fontListListItemElements: HTMLLIElement[];
     fonts: Font[];
+    selectedFont: Font | undefined;
 
     constructor(selector: string, options: Options) {
         this.options = FontSelector.mergeOptionsWithDefaults(options);
@@ -20,6 +21,7 @@ export default class FontSelector {
         this.selectedFontElement = this.createSelectedFontElement();
         this.fontListListItemElements = this.createFontListListItemElements();
         this.dropdownElement = this.createDropdownElement();
+        this.selectFont(this.getSelectedOption().value);
 
         this.loadFonts();
 
@@ -56,8 +58,17 @@ export default class FontSelector {
         this.selectedFontElement.append(selectedFontNameElement);
 
         this.nativeSelectElement.value = font.family;
+        this.selectedFont = font;
 
         this.options.onSelected(font);
+    }
+
+    public getSelectedFont(): Font | null {
+        if (!this.selectedFont) {
+            return null;
+        }
+
+        return this.selectedFont;
     }
 
     private static mergeOptionsWithDefaults(options: Options): Options {
@@ -101,19 +112,13 @@ export default class FontSelector {
     }
 
     private createSelectedFontElement(): HTMLAnchorElement {
-        const optionElement = this.getSelectedOption();
-        const selectedFontFamily = optionElement.value;
-        const selectedFontName = optionElement.textContent!.trim();
-
         const selectedFontElement = document.createElement('a');
-        const selectedFontFamilyClassName = this.getFontFamilyClassName(selectedFontFamily);
         const selectedFontNameElement = document.createElement('span');
 
-        selectedFontNameElement.textContent = selectedFontName;
         selectedFontNameElement.classList.add(this.options.dropdownSelectedFontNameClassName);
 
         selectedFontElement.append(selectedFontNameElement);
-        selectedFontElement.classList.add(this.options.dropdownSelectedFontClassName, selectedFontFamilyClassName);
+        selectedFontElement.classList.add(this.options.dropdownSelectedFontClassName);
 
         selectedFontElement.addEventListener('click', () => {
             if (this.isExpanded()) {
