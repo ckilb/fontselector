@@ -36,13 +36,12 @@ export default class FontSelector {
             return;
         }
 
-        const selectedOption = this.getSelectedOption();
-        const previouslySelectedFontFamilyClassName = this.getFontFamilyClassName(selectedOption.value);
         const newSelectedFontFamilyClassName = this.getFontFamilyClassName(font.family);
         const selectedFontNameElement = document.createElement('span');
 
         selectedFontNameElement.classList.add(this.options.dropdownSelectedFontNameClassName);
 
+        this.selectedFontElement.setAttribute('class', '');
         this.selectedFontElement.classList.add(
             this.options.dropdownSelectedFontClassName,
             newSelectedFontFamilyClassName
@@ -50,8 +49,6 @@ export default class FontSelector {
 
         this.collapseFontList();
 
-        this.selectedFontElement.classList.remove(previouslySelectedFontFamilyClassName);
-        this.selectedFontElement.classList.add(newSelectedFontFamilyClassName);
         selectedFontNameElement.textContent = font.name;
 
         this.selectedFontElement.innerHTML = '';
