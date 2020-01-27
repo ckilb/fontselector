@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="../dist/styles.css" />
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta charset="utf-8" />
     <style type="text/css">
         body {
@@ -39,11 +40,11 @@
             <button type="submit" class="btn btn-primary">Select Font</button>
         </form>
 
-        <script type="text/javascript" src="../dist/font-selector.js"></script>
+        <script type="text/javascript" src="../dist/fontselector.js"></script>
         <script type="text/javascript">
             new FontSelector('#font-selector', {
-                onSelected: (fontName) => {
-                    console.log('Font "' + fontName + '" was selected.');
+                onSelected: (font) => {
+                    console.log('Font "' + font.name + '" was selected.');
                 }
             });
 
@@ -54,7 +55,7 @@
                 event.preventDefault();
 
                 alert('Selected font: ' + selectElement.value);
-            })
+            });
         </script>
     </div>
 </body>

@@ -24,7 +24,7 @@ module.exports = {
         ],
     },
     output: {
-        filename: 'font-selector.js',
+        filename: 'fontselector.js',
         path: path.resolve(__dirname, 'dist'),
         library: "FontSelector",
         libraryExport: 'default',

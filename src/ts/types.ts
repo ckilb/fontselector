@@ -9,3 +9,9 @@ export interface Options {
     onSelected: Function,
     onCollapsed: Function
 }
+
+export interface Font {
+    name: string,
+    family: string,
+    url: string
+}
