@@ -1,5 +1,6 @@
 import '../scss/style.scss';
 import { Font, Options } from './types';
+import './polyfill.ts';
 
 const CSS_CLASS_PREFIX = 'font-selector-';
 
@@ -42,10 +43,9 @@ export default class FontSelector {
         selectedFontNameElement.classList.add(this.options.dropdownSelectedFontNameClassName);
 
         this.selectedFontElement.setAttribute('class', '');
-        this.selectedFontElement.classList.add(
-            this.options.dropdownSelectedFontClassName,
-            newSelectedFontFamilyClassName
-        );
+
+        this.selectedFontElement.classList.add(this.options.dropdownSelectedFontClassName);
+        this.selectedFontElement.classList.add(newSelectedFontFamilyClassName);
 
         this.collapseFontList();
 

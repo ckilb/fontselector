@@ -43,19 +43,18 @@
         <script type="text/javascript" src="../dist/fontselector.js"></script>
         <script type="text/javascript">
             const fontSelector = new FontSelector('#font-selector', {
-                onSelected: (font) => {
+                onSelected: function (font) {
                     console.log('Font "' + font.name + '" was selected.');
                 }
             });
 
             const formElement = document.querySelector('form');
             const selectElement = document.querySelector('#font-selector');
+                formElement.addEventListener('submit', function(event) {
+                    event.preventDefault();
 
-                formElement.addEventListener('submit', (event) => {
-                event.preventDefault();
-
-                alert('Selected font: ' + selectElement.value);
-            });
+                    alert('Selected font: ' + selectElement.value);
+                });
         </script>
     </div>
 </body>

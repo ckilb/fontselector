@@ -8,7 +8,26 @@ module.exports = {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                [
+                                    "@babel/preset-env",
+                                    {
+                                        useBuiltIns: 'usage',
+                                        corejs: 3
+                                    }
+                                ]
+                            ],
+                            plugins: [
+                                '@babel/plugin-transform-modules-commonjs'
+                            ]
+                        }
+                    },
+                    'ts-loader',
+                ],
                 exclude: /node_modules/,
             },
             {
