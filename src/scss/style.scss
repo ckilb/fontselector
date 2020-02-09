@@ -78,6 +78,9 @@ $selected-font-element-height: 35px;
   display: inline-block;
   top: 50%;
   left: $padding;
+  right: $padding * 3;
+  white-space: nowrap;
+  overflow: hidden;
   transform: translateY(-50%);
 }
 
