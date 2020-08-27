@@ -14,7 +14,7 @@ export default class FontSelector {
     fonts: Font[];
     selectedFont: Font | undefined;
 
-    constructor(selector: string, options: Options) {
+    constructor(selector: string, options: Partial<Options>) {
         this.options = FontSelector.mergeOptionsWithDefaults(options);
         this.nativeSelectElement = document.querySelector<HTMLSelectElement>(selector)!;
         this.fonts = this.getFonts();
@@ -68,13 +68,11 @@ export default class FontSelector {
         return this.selectedFont;
     }
 
-    private static mergeOptionsWithDefaults(options: Options): Options {
-        options = Object.assign(
-            FontSelector.getDefaultOptions(),
-            options
-        );
-
-        return options;
+    private static mergeOptionsWithDefaults(options: Partial<Options>): Options {
+        return {
+            ...FontSelector.getDefaultOptions(),
+            ...options
+        };
     }
 
     private static getDefaultOptions(): Options {

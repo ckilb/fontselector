@@ -9,12 +9,15 @@ $selected-font-element-height: 35px;
   min-width: 200px;
   display: inline-block;
   font-size: 18px;
+  position: relative;
 
   > select {
     visibility: hidden;
     width: 0;
     height: 0;
     position: absolute;
+    margin: 0;
+    padding: 0;
   }
 }
 
