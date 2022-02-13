@@ -1,6 +1,6 @@
 {
   "name": "@ckdot/fontselector",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "Font selector with font previews without the use of Google Fonts.",
   "main": "./dist/FontSelector.js",
   "browserslist": "> 0.25%, not dead",
